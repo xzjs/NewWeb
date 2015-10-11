@@ -9,7 +9,6 @@
 
     <!-- Bootstrap -->
     <link href="/newweb/Public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/newweb/Public/css/bootstrap.css" rel="stylesheet">
     <link href="/newweb/Public/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="/newweb/Public/css/hosting.css" rel="stylesheet" media="all">
@@ -55,30 +54,28 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">我的 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
+                <?php if(isset($_SESSION['user'])): ?><li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><?php echo ($_SESSION['user']["email"]); ?><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的订单</a></li>
+                            <li><a href="#">我的供应</a></li>
+                            <li><a href="#">注销</a></li>
+                        </ul>
+                    </li>
+                    <?php else: ?>
+                    <li><a href="/newweb/index.php/Home/Index/login">登录</a></li>
+                    <li><a href="/newweb/index.php/Home/Index/register">注册</a></li><?php endif; ?>
+
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div class="container">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -124,38 +121,39 @@
 <p>
 
 </p>
-
-<div class="panel panel-success">
-    <div class="panel-heading">热门供应</div>
-    <div class="panel-body">
-        <table class="table">
-            <tbody>
-            <tr>
-                <td>小黄姜</td>
-                <td>山东日照莒县</td>
-                <td>王老板</td>
-                <td>1.6~2元/公斤</td>
-            </tr>
-            <tr>
-                <td>小黄姜</td>
-                <td>山东日照莒县</td>
-                <td>王老板</td>
-                <td>1.6~2元/公斤</td>
-            </tr>
-            <tr>
-                <td>小黄姜</td>
-                <td>山东日照莒县</td>
-                <td>王老板</td>
-                <td>1.6~2元/公斤</td>
-            </tr>
-            <tr>
-                <td>小黄姜</td>
-                <td>山东日照莒县</td>
-                <td>王老板</td>
-                <td>1.6~2元/公斤</td>
-            </tr>
-            </tbody>
-        </table>
+<div class="row-fluid">
+    <div class="panel panel-success">
+        <div class="panel-heading">热门供应</div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>小黄姜</td>
+                    <td>山东日照莒县</td>
+                    <td>王老板</td>
+                    <td>1.6~2元/公斤</td>
+                </tr>
+                <tr>
+                    <td>小黄姜</td>
+                    <td>山东日照莒县</td>
+                    <td>王老板</td>
+                    <td>1.6~2元/公斤</td>
+                </tr>
+                <tr>
+                    <td>小黄姜</td>
+                    <td>山东日照莒县</td>
+                    <td>王老板</td>
+                    <td>1.6~2元/公斤</td>
+                </tr>
+                <tr>
+                    <td>小黄姜</td>
+                    <td>山东日照莒县</td>
+                    <td>王老板</td>
+                    <td>1.6~2元/公斤</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -232,7 +230,23 @@
                 <p>五元一斤</p>
             </div>
             <!-- /.col-lg-4 -->
+            <div class="col-lg-2">
+                <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
+                     height="140">
 
+                <h2>烟台红富士</h2>
+
+                <p>五元一斤</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-2">
+                <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
+                     height="140">
+
+                <h2>烟台红富士</h2>
+
+                <p>五元一斤</p>
+            </div>
             <!-- /.col-lg-4 -->
         </div>
     </div>
@@ -241,7 +255,7 @@
     <div class="panel-heading">畅销商品</div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-mg-2">
+            <div class="col-lg-2">
                 <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
                      height="140">
 
@@ -250,7 +264,7 @@
                 <p>五元一斤</p>
             </div>
             <!-- /.col-lg-4 -->
-            <div class="col-mg-2">
+            <div class="col-lg-2">
                 <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
                      height="140">
 
@@ -259,7 +273,7 @@
                 <p>五元一斤</p>
             </div>
             <!-- /.col-lg-4 -->
-            <div class="col-mg-2">
+            <div class="col-lg-2">
                 <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
                      height="140">
 
@@ -268,7 +282,7 @@
                 <p>五元一斤</p>
             </div>
             <!-- /.col-lg-4 -->
-            <div class="col-mg-2">
+            <div class="col-lg-2">
                 <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
                      height="140">
 
@@ -277,15 +291,27 @@
                 <p>五元一斤</p>
             </div>
             <!-- /.col-lg-4 -->
+            <div class="col-lg-2">
+                <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
+                     height="140">
 
+                <h2>烟台红富士</h2>
+
+                <p>五元一斤</p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-2">
+                <img class="img-circle" src="/newweb/Public/img/pg.jpg" alt="Generic placeholder image" width="140"
+                     height="140">
+
+                <h2>烟台红富士</h2>
+
+                <p>五元一斤</p>
+            </div>
             <!-- /.col-lg-4 -->
         </div>
     </div>
 </div>
-
-        </div>
-        <div class="col-md-2"></div>
-    </div>
 
 </div>
 </body>

@@ -9,7 +9,6 @@
 
     <!-- Bootstrap -->
     <link href="/newweb/Public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/newweb/Public/css/bootstrap.css" rel="stylesheet">
     <link href="/newweb/Public/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <link href="http://fonts.useso.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="/newweb/Public/css/hosting.css" rel="stylesheet" media="all">
@@ -55,156 +54,129 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">我的 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
+                <?php if(isset($_SESSION['user'])): ?><li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><?php echo ($_SESSION['user']["email"]); ?><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的订单</a></li>
+                            <li><a href="/newweb/index.php/Home/Index/mysupport">我的供应</a></li>
+                            <li><a href="/newweb/index.php/Home/Index/company">我的公司</a></li>
+                            <li><a href="#">注销</a></li>
+                        </ul>
+                    </li>
+                    <?php else: ?>
+                    <li><a href="/newweb/index.php/Home/Index/login">登录</a></li>
+                    <li><a href="/newweb/index.php/Home/Index/register">注册</a></li><?php endif; ?>
+
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="container-fluid">
-    <div class="panel panel-success">
-    <div class="panel-heading">商品供应&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>我要供应</a></div>
+<div class="container">
+    <style type="text/css">
+    body {
+        font-family: 'microsoft yahei', Arial, sans-serif;
+        color: #898989;
+    }
+
+    .shape {
+        border-style: solid;
+        border-width: 0 80px 80px 0;
+        float: right;
+        height: 0px;
+        width: 0px;
+        -ms-transform: rotate(360deg); /* IE 9 */
+        -o-transform: rotate(360deg); /* Opera 10.5 */
+        -webkit-transform: rotate(360deg); /* Safari and Chrome */
+        transform: rotate(360deg);
+    }
+
+    .speical {
+        background: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        margin: 15px 0;
+        overflow: hidden;
+    }
+
+    .speical:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: rotate scale(1.1);
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .shape {
+        border-color: rgba(255, 255, 255, 0) #669933 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    }
+
+    .speical-default {
+        border: 1px solid #3399CC;
+    }
+
+    .speical-radius {
+        border-radius: 5px;
+    }
+
+    .shape-text {
+        color: #fff;
+        font-size: 14px;
+        position: relative;
+        right: -45px;
+        top: 2px;
+        white-space: nowrap;
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -o-transform: rotate(45deg); /* Opera 10.5 */
+        -webkit-transform: rotate(45deg); /* Safari and Chrome */
+        transform: rotate(45deg);
+    }
+
+    .text-special-default {
+        color: #3399CC;
+    }
+
+    .speical-content {
+        padding: 0 20px 10px;
+    }
+</style>
+<div class="panel panel-success">
+    <div class="panel-heading">商品供应&nbsp;&nbsp;&nbsp;<a href="/newweb/index.php/Home/Index/add">我要供应</a></div>
     <div class="panel-body">
-        <div class="row-fluid">
-            <!-- Row2 start -->
+        <div class="row">
+            <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="/newweb/index.php/Home/Index/detail/<?php echo ($vo["id"]); ?>">
+                        <div class="speical speical-default speical-radius">
+                            <div class="shape">
+                                <div class="shape-text">
+                                    促销
+                                </div>
+                            </div>
+                            <div class="speical-content">
+                                <h3 class="text-special-default">
+                                    <?php echo ($vo["name"]); ?>
+                                </h3>
 
+                                <p>
+                                    <img class="img-responsive img-rounded"
+                                         src="/newweb/Uploads/<?php echo ($vo["photo"]); ?>" alt="MI">
+                                </p>
 
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div>
-
-            <div class="span3 PlanPricing template4">
-                <div class="planName"> <span class="price">￥5</span>
-                    <h3>苹果</h3>
-                    <p>山东烟台</p>
-                </div>
-                <div class="planFeatures">
-                    <ul>
-                        <li><img src="/newweb/Public/img/pg.jpg"></li>
-                        <li>张老板</li>
-
-                    </ul>
-                </div>
-                <p> <a href="#Signup" role="button" data-toggle="modal" class="btn btn-success btn-large">采购 </a> </p>
-            </div><!-- Price template4 Ends -->
-
-
-
-
-        </div>  <!-- Row2 ends -->
+                                <p>
+                                    <?php echo ($vo["price"]); ?>元/斤
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div><?php endforeach; endif; else: echo "" ;endif; ?>
+        </div>
     </div>
 </div>
 </div>
