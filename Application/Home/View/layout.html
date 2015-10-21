@@ -55,8 +55,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <if condition="isset($_SESSION['user'])">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{:session('user')['name']}<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:session('user')['name']}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{:U('Order/index')}">我的订单</a></li>
                             <li><a href="__URL__/mysupport">我的供应</a></li>
