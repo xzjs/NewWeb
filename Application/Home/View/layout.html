@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>国际农联网</title>
 
     <!-- Bootstrap -->
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
@@ -42,10 +42,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="__URL__">首页 <span class="sr-only">(current)</span></a></li>
-                <li><a href="__URL__/buy">商品采购</a></li>
-                <li><a href="__URL__/support">商品供应</a></li>
-                <li><a href="#">今日行情</a></li>
+                <li class="{$class1}"><a href="__APP__">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="{$class2}"><a href="{:U('Purchase/index')}">商品采购</a></li>
+                <li class="{$class3}"><a href="{:U('Support/index')}">商品供应</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -57,20 +56,18 @@
                 <if condition="isset($_SESSION['user'])">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{$_SESSION['user'].email}<span class="caret"></span></a>
+                           aria-expanded="false">{:session('user')['name']}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">我的订单</a></li>
+                            <li><a href="{:U('Order/index')}">我的订单</a></li>
                             <li><a href="__URL__/mysupport">我的供应</a></li>
                             <li><a href="__URL__/company">我的公司</a></li>
-                            <li><a href="#">注销</a></li>
+                            <li><a href="{:U('User/logout')}">注销</a></li>
                         </ul>
                     </li>
                     <else/>
-                    <li><a href="__URL__/login">登录</a></li>
-                    <li><a href="__URL__/register">注册</a></li>
+                    <li><a href="{:U('User/login')}">登录</a></li>
+                    <li><a href="{:U('User/register')}">注册</a></li>
                 </if>
-
-
             </ul>
         </div>
         <!-- /.navbar-collapse -->

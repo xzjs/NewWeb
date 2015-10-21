@@ -1,0 +1,23 @@
+<div class="panel panel-success">
+    <div class="panel-heading">免费发布供应信息</div>
+    <div class="panel-body">
+        <div class="row-fluid">
+            <div class="col-md-6">
+                <form action="{:U('Purchase/addx')}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" value="{$_SESSION['user'].id}" name="user_id">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">要采购的产品</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="商品名" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">要采购的数量</label>
+                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="商品名" name="name">
+                    </div>
+                    <input type="submit" class="btn btn-default" value="发布">
+                </form>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</div>

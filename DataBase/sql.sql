@@ -94,6 +94,33 @@ LOCK TABLES `think_detail` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `think_order`
+--
+
+DROP TABLE IF EXISTS `think_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `think_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `support_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `think_order`
+--
+
+LOCK TABLES `think_order` WRITE;
+/*!40000 ALTER TABLE `think_order` DISABLE KEYS */;
+INSERT INTO `think_order` VALUES (1,2,1,20,'0000-00-00 00:00:00'),(2,2,1,30,'0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `think_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `think_place`
 --
 
@@ -140,6 +167,33 @@ LOCK TABLES `think_product` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `think_purchase`
+--
+
+DROP TABLE IF EXISTS `think_purchase`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `think_purchase` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `num` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `user_id` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `think_purchase`
+--
+
+LOCK TABLES `think_purchase` WRITE;
+/*!40000 ALTER TABLE `think_purchase` DISABLE KEYS */;
+INSERT INTO `think_purchase` VALUES (1,'大蒜','20吨','2015-10-20 00:00:00','1');
+/*!40000 ALTER TABLE `think_purchase` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `think_quote`
 --
 
@@ -174,7 +228,7 @@ DROP TABLE IF EXISTS `think_support`;
 CREATE TABLE `think_support` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `price` float DEFAULT NULL,
+  `price` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `photo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -187,7 +241,7 @@ CREATE TABLE `think_support` (
 
 LOCK TABLES `think_support` WRITE;
 /*!40000 ALTER TABLE `think_support` DISABLE KEYS */;
-INSERT INTO `think_support` VALUES (1,NULL,5,'1444475093.jpg','烟台苹果'),(2,NULL,5,'1444475896.jpg','苹果'),(3,1,5,'1444476051.jpg','苹果');
+INSERT INTO `think_support` VALUES (1,2,'5元/斤','1444475093.jpg','烟台苹果'),(2,2,'5元/斤','1444475896.jpg','苹果'),(3,2,'5元/斤','1444476051.jpg','苹果');
 /*!40000 ALTER TABLE `think_support` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +269,7 @@ CREATE TABLE `think_user` (
 
 LOCK TABLES `think_user` WRITE;
 /*!40000 ALTER TABLE `think_user` DISABLE KEYS */;
-INSERT INTO `think_user` VALUES (1,'1@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,NULL),(2,'2@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,NULL),(3,'3@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,NULL);
+INSERT INTO `think_user` VALUES (1,'1@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,'A'),(2,'2@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,'B'),(3,'3@qq.com','c4ca4238a0b923820dcc509a6f75849b',NULL,'C');
 /*!40000 ALTER TABLE `think_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -228,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-11 22:30:13
+-- Dump completed on 2015-10-21 22:00:54

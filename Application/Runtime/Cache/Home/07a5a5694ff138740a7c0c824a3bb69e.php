@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>国际农联网</title>
 
     <!-- Bootstrap -->
     <link href="/newweb/Public/css/bootstrap.min.css" rel="stylesheet">
@@ -42,10 +42,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/newweb/index.php/Home/Index">首页 <span class="sr-only">(current)</span></a></li>
-                <li><a href="/newweb/index.php/Home/Index/buy">商品采购</a></li>
-                <li><a href="/newweb/index.php/Home/Index/support">商品供应</a></li>
-                <li><a href="#">今日行情</a></li>
+                <li class="<?php echo ($class1); ?>"><a href="/newweb/index.php/Home/Index">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="<?php echo ($class2); ?>"><a href="/newweb/index.php/Home/Index/buy">商品采购</a></li>
+                <li class="<?php echo ($class3); ?>"><a href="/newweb/index.php/Home/Index/support">商品供应</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -56,19 +55,17 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php if(isset($_SESSION['user'])): ?><li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false"><?php echo ($_SESSION['user']["email"]); ?><span class="caret"></span></a>
+                           aria-expanded="false"><?php echo session('user')['name'];?><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">我的订单</a></li>
                             <li><a href="/newweb/index.php/Home/Index/mysupport">我的供应</a></li>
                             <li><a href="/newweb/index.php/Home/Index/company">我的公司</a></li>
-                            <li><a href="#">注销</a></li>
+                            <li><a href="<?php echo U('User/logout');?>">注销</a></li>
                         </ul>
                     </li>
                     <?php else: ?>
-                    <li><a href="/newweb/index.php/Home/Index/login">登录</a></li>
-                    <li><a href="/newweb/index.php/Home/Index/register">注册</a></li><?php endif; ?>
-
-
+                    <li><a href="<?php echo U('User/login');?>">登录</a></li>
+                    <li><a href="<?php echo U('User/register');?>">注册</a></li><?php endif; ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -148,314 +145,18 @@
     }
 </style>
 <div class="panel panel-success">
-    <div class="panel-heading">商品采购</div>
+    <div class="panel-heading">商品采购&nbsp;&nbsp;&nbsp;<a href="<?php echo U('Purchase/add');?>">我要买货</a> </div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a href="#">
-                    <div class="speical speical-default speical-radius">
-                        <div class="shape">
-                            <div class="shape-text">
-                                促销
-                            </div>
-                        </div>
-                        <div class="speical-content">
-                            <h3 class="text-special-default">
-                                苹果
-                            </h3>
-
-                            <p>
-                                <img class="img-responsive img-rounded"
-                                     src="/newweb/Public/img/pg.jpg" alt="MI">
-                            </p>
-
-                            <p>
-                                超大64G ~ 仅售1880元
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td>采购玉米</td>
+                <td>5000吨</td>
+                <td>2015-10-20</td>
+                <td><a href="#" class="btn btn-danger">报价</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </div>

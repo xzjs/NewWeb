@@ -1,0 +1,32 @@
+<div class="panel panel-success">
+    <div class="panel-heading">免费发布供应信息</div>
+    <div class="panel-body">
+        <form action="{:U('Order/add')}" method="post">
+            <div class="row-fluid">
+                <input type="hidden" value="{$data.id}" name="support_id">
+                <div class="col-md-6">
+                    <img src="__ROOT__/Uploads/{$data.photo}">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>商品名</label>
+                        {$data.name}
+                    </div>
+                    <div class="form-group">
+                        <label>价格</label>
+                        {$data.price}
+                    </div>
+                    <div class="form-group">
+                        <label>供应商</label>
+                        {$data.username}
+                    </div>
+                    <div class="form-group">
+                        <label>数量</label>
+                        <input type="number" name="num">
+                    </div>
+                    <input type="submit" value="订购" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -70,16 +70,19 @@
     }
 </style>
 <div class="panel panel-success">
-    <div class="panel-heading">商品采购&nbsp;&nbsp;&nbsp;<a href="{:U('Purchase/add')}">我要买货</a> </div>
+    <div class="panel-heading">商品采购&nbsp;&nbsp;&nbsp;<a href="{:U('Purchase/add')}">我要买货</a></div>
     <div class="panel-body">
         <table class="table table-striped">
             <tbody>
-            <tr>
-                <td>采购玉米</td>
-                <td>5000吨</td>
-                <td>2015-10-20</td>
-                <td><a href="#" class="btn btn-danger">报价</a></td>
-            </tr>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.num}</td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.time}</td>
+                    <td><a href="javascript:alert('等待外接报价软件')" class="btn btn-danger">报价</a></td>
+                </tr>
+            </volist>
             </tbody>
         </table>
     </div>

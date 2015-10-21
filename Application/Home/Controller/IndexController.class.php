@@ -6,34 +6,11 @@ use Think\Controller;
 class IndexController extends Controller
 {
     /**
-     * 注册
+     * 首页
      */
-    public function registerx()
-    {
-        $User = D("User");
-        if (!$User->create()) {
-            // 如果创建失败 表示验证没有通过 输出错误提示信息
-            $this->error($User->getError());
-        } else {
-            // 验证通过 可以进行其他数据操作
-            $User->add();
-            $this->success('注册成功', "login");
-        }
-    }
-
-    /**
-     * 登录
-     */
-    public function loginx()
-    {
-        $User = D("User");
-        $data = $User->where('email="' . I('post.email') . '" and pwd="' . md5(I('post.pwd')) . '"')->find();
-        if ($data) {
-            $_SESSION['user'] = $data;
-            $this->success('登录成功', __APP__);
-        } else {
-            $this->error('登录失败');
-        }
+    public function index(){
+        $this->assign('class1','active');
+        $this->show();
     }
 
     /**
@@ -82,15 +59,7 @@ class IndexController extends Controller
         $this->show();
     }
 
-    /**
-     * 供应列表
-     */
-    public function support(){
-        $Support=D("Support");
-        $list=$Support->select();
-        $this->assign('list',$list);
-        $this->show();
-    }
+
 
     /**
      * 公司
@@ -126,7 +95,13 @@ class IndexController extends Controller
         }
     }
 
-    public function detail($id){
 
+
+    /**
+     * 商品采购
+     */
+    public function buy(){
+
+        $this->show();
     }
 }

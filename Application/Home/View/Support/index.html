@@ -70,17 +70,36 @@
     }
 </style>
 <div class="panel panel-success">
-    <div class="panel-heading">商品采购&nbsp;&nbsp;&nbsp;<a href="{:U('Purchase/add')}">我要买货</a> </div>
+    <div class="panel-heading">商品供应&nbsp;&nbsp;&nbsp;<a href="__URL__/add">我要供应</a></div>
     <div class="panel-body">
-        <table class="table table-striped">
-            <tbody>
-            <tr>
-                <td>采购玉米</td>
-                <td>5000吨</td>
-                <td>2015-10-20</td>
-                <td><a href="#" class="btn btn-danger">报价</a></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <volist name="list" id="vo">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="detail/id/{$vo.id}">
+                        <div class="speical speical-default speical-radius">
+                            <div class="shape">
+                                <div class="shape-text">
+                                    促销
+                                </div>
+                            </div>
+                            <div class="speical-content">
+                                <h3 class="text-special-default">
+                                    {$vo.name}
+                                </h3>
+
+                                <p>
+                                    <img class="img-responsive img-rounded"
+                                         src="__ROOT__/Uploads/{$vo.photo}" alt="MI">
+                                </p>
+
+                                <p>
+                                    {$vo.price}元/斤
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </volist>
+        </div>
     </div>
 </div>
