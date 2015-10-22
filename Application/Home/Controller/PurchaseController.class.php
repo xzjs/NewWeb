@@ -25,7 +25,7 @@ class PurchaseController extends Controller
     public function addx(){
         $Purchase=D('Purchase');
         $Purchase->create();
-        $Purchase->user_id=session('user')['id'];
+        $Purchase->user_id=$_SESSION['user']['id'];
         $result=$Purchase->add();
         if($result){
             $this->success('添加成功','index');
