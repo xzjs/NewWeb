@@ -32,7 +32,7 @@ class OrderController extends Controller
      */
     public function index(){
         $Order=D("Order");
-        $list=$Order->where('user_id='.session('user')['id'])->relation(true)->select();
+        $list=$Order->where('user_id='.$_SESSION['user']['id'])->relation(true)->select();
         $this->assign('list',$list);
         $this->show();
     }
