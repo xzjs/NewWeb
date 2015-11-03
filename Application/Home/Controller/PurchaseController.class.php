@@ -15,7 +15,7 @@ class PurchaseController extends Controller
         if(isset($_SESSION['user'])){
             $this->show();
         }else{
-            $this->error('请登录',U('Index/login'));
+            $this->error('请登录',U('User/login'));
         }
     }
 
