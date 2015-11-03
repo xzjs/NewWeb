@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function add(){
         $Order=D("Order");
         $Order->create();
-        $Order->user_id=session('user')['id'];
+        $Order->user_id=$_SESSION['user']['id'];
         $result=$Order->add();
         if($result){
             $this->success('订购成功',U('Support/index'));
